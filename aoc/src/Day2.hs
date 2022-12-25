@@ -3,26 +3,33 @@
 module Day2 (problemA, problemB) where
 
 import Aoc (Problem (..))
-import Text.Read (readMaybe)
-import Data.List (groupBy, sortBy)
-import Data.Maybe (isJust, mapMaybe)
 
--- First part of day 1, using list comprehension
-problemA :: Problem [Maybe Int] Int
-problemA = Problem {parse = map readMaybe . lines, solve = calories}
+problemA :: Problem [Int] Int
+problemA = Problem {parse = map calculatePoints . lines, solve = calories}
   where
-    calories l = maximum $ mapMaybe sumCalories (groupBy justs l)
-    justs a b = isJust a && isJust b
+    calories = sum
+    calculatePoints "A X" = 1 + 3 -- Rock Rock
+    calculatePoints "A Y" = 2 + 6 -- Rock Paper
+    calculatePoints "A Z" = 3 + 0 -- Rock Scissor
+    calculatePoints "B X" = 1 + 0 -- Paper Rock
+    calculatePoints "B Y" = 2 + 3 -- Paper Paper
+    calculatePoints "B Z" = 3 + 6 -- Paper Scissor
+    calculatePoints "C X" = 1 + 6 -- Scissor Rock
+    calculatePoints "C Y" = 2 + 0 -- Scissor Paper
+    calculatePoints "C Z" = 3 + 3 -- Scissor Scissor
+    calculatePoints _ = -10000
 
-    sumCalories :: [Maybe Int] -> Maybe Int
-    sumCalories l = sum <$> sequence l
-
--- First part of day 1, using list comprehension
-problemB :: Problem [Maybe Int] Int
-problemB = Problem {parse = map readMaybe . lines, solve = calories}
+problemB :: Problem [Int] Int
+problemB = Problem {parse = map calculatePointsB . lines, solve = calories}
   where
-    calories l = sum $ take 3 $ sortBy (flip compare) $ mapMaybe sumCalories (groupBy justs l)
-    justs a b = isJust a && isJust b
-
-    sumCalories :: [Maybe Int] -> Maybe Int
-    sumCalories l = sum <$> sequence l
+    calories = sum
+    calculatePointsB "A X" = 3 + 0 -- Rock Lose
+    calculatePointsB "A Y" = 1 + 3 -- Rock Draw
+    calculatePointsB "A Z" = 2 + 6 -- Rock Win
+    calculatePointsB "B X" = 1 + 0 -- Paper Lose
+    calculatePointsB "B Y" = 2 + 3 -- Paper Draw
+    calculatePointsB "B Z" = 3 + 6 -- Paper Win
+    calculatePointsB "C X" = 2 + 0 -- Scissor Lose
+    calculatePointsB "C Y" = 3 + 3 -- Scissor Draw
+    calculatePointsB "C Z" = 1 + 6 -- Scissor Win
+    calculatePointsB _ = -10000

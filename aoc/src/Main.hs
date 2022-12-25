@@ -27,8 +27,8 @@ main = do
           execute 1 Day1.problemA
           execute 1 Day1.problemB
       "2" -> do
-          execute 1 Day2.problemA
-          execute 1 Day2.problemB
+          execute 2 Day2.problemA
+          execute 2 Day2.problemB
       "3" -> execute 3 notImplemented
       "4" -> execute 4 notImplemented
       "5" -> execute 5 notImplemented
