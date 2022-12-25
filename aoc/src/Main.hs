@@ -3,6 +3,7 @@ module Main (main) where
 import Aoc (Problem (..), notImplemented)
 import qualified Day1 (problemA, problemB)
 import qualified Day2 (problemA, problemB)
+import qualified Day3 (problemA, problemB)
 import System.Environment (getArgs)
 
 -- Execute the problem to parse and find a solution
@@ -29,7 +30,9 @@ main = do
       "2" -> do
           execute 2 Day2.problemA
           execute 2 Day2.problemB
-      "3" -> execute 3 notImplemented
+      "3" -> do
+          execute 3 Day3.problemA
+          execute 3 Day3.problemB          
       "4" -> execute 4 notImplemented
       "5" -> execute 5 notImplemented
       "6" -> execute 6 notImplemented
