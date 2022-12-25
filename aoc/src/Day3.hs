@@ -29,13 +29,13 @@ problemA = Problem {parse = map makeRucksack . lines, solve = review}
 problemB :: Problem [[Int]] Int
 problemB = Problem {parse = map makeRucksack . lines, solve = review}
   where
-    review l = sum $ map doit $ chunksOf 3 l
+    review l = sum $ map findBadge $ chunksOf 3 l
       where
-        doit::[[Int]]->Int
-        doit ll = head $ toList $ foldl intersectit (fromList [1..52]) ll
+        findBadge::[[Int]]->Int
+        findBadge ll = head $ toList $ foldl intersectitems (fromList [1..52]) ll
           where
-            intersectit::Set Int->[Int]->Set Int
-            intersectit a b = intersection a (fromList b)
+            intersectitems::Set Int->[Int]->Set Int
+            intersectitems a b = intersection a (fromList b)
 
     makeRucksack::String->[Int]
     makeRucksack = map (priority . ord)
