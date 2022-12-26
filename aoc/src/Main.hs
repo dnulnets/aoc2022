@@ -4,15 +4,16 @@ import Aoc (Problem (..), notImplemented)
 import qualified Day1 (problemA, problemB)
 import qualified Day2 (problemA, problemB)
 import qualified Day3 (problemA, problemB)
+import qualified Day4 (problemA, problemB)
 import System.Environment (getArgs)
 
 -- Execute the problem to parse and find a solution
 execute :: (Show b) => Int -> Problem a b -> IO ()
 execute n problem = do
   rawData <- readFile $ show n <> ".dat"
-  let input = parse problem $ init rawData
+  let input = parsePuzzle problem $ init rawData
   -- putStrLn $ "Input=" <> show input
-  putStrLn $ "Output=" <> show (solve problem input)
+  putStrLn $ "Output=" <> show (solvePuzzle problem input)
 
 -- Write out the usage
 usage :: IO ()
@@ -33,7 +34,9 @@ main = do
       "3" -> do
           execute 3 Day3.problemA
           execute 3 Day3.problemB          
-      "4" -> execute 4 notImplemented
+      "4" -> do
+          execute 4 Day4.problemA
+          execute 4 Day4.problemB
       "5" -> execute 5 notImplemented
       "6" -> execute 6 notImplemented
       "7" -> execute 7 notImplemented

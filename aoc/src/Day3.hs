@@ -9,7 +9,7 @@ import Data.Foldable (toList)
 import Data.List.Split (chunksOf)
 
 problemA :: Problem [([Int],[Int])] Int
-problemA = Problem {parse = map makeRucksack . lines, solve = review}
+problemA = Problem {parsePuzzle = map makeRucksack . lines, solvePuzzle = review}
   where
     review = sum . map (sum . toList . wrong)
       where
@@ -27,7 +27,7 @@ problemA = Problem {parse = map makeRucksack . lines, solve = review}
 
 
 problemB :: Problem [[Int]] Int
-problemB = Problem {parse = map makeRucksack . lines, solve = review}
+problemB = Problem {parsePuzzle = map makeRucksack . lines, solvePuzzle = review}
   where
     review l = sum $ map findBadge $ chunksOf 3 l
       where

@@ -9,7 +9,7 @@ import Data.Maybe (isJust, mapMaybe)
 
 -- First part of day 1, using list comprehension
 problemA :: Problem [Maybe Int] Int
-problemA = Problem {parse = map readMaybe . lines, solve = calories}
+problemA = Problem {parsePuzzle = map readMaybe . lines, solvePuzzle = calories}
   where
     calories l = maximum $ mapMaybe sumCalories (groupBy justs l)
     justs a b = isJust a && isJust b
@@ -19,7 +19,7 @@ problemA = Problem {parse = map readMaybe . lines, solve = calories}
 
 -- First part of day 1, using list comprehension
 problemB :: Problem [Maybe Int] Int
-problemB = Problem {parse = map readMaybe . lines, solve = calories}
+problemB = Problem {parsePuzzle = map readMaybe . lines, solvePuzzle = calories}
   where
     calories l = sum $ take 3 $ sortBy (flip compare) $ mapMaybe sumCalories (groupBy justs l)
     justs a b = isJust a && isJust b

@@ -5,7 +5,7 @@ module Day2 (problemA, problemB) where
 import Aoc (Problem (..))
 
 problemA :: Problem [Int] Int
-problemA = Problem {parse = map calculatePoints . lines, solve = calories}
+problemA = Problem {parsePuzzle = map calculatePoints . lines, solvePuzzle = calories}
   where
     calories = sum
     calculatePoints "A X" = 1 + 3 -- Rock Rock
@@ -20,7 +20,7 @@ problemA = Problem {parse = map calculatePoints . lines, solve = calories}
     calculatePoints _ = -10000
 
 problemB :: Problem [Int] Int
-problemB = Problem {parse = map calculatePointsB . lines, solve = calories}
+problemB = Problem {parsePuzzle = map calculatePointsB . lines, solvePuzzle = calories}
   where
     calories = sum
     calculatePointsB "A X" = 3 + 0 -- Rock Lose
