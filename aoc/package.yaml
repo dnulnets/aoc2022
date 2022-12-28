@@ -25,6 +25,7 @@ dependencies:
 - split
 - parsec
 - parsec-numbers
+- ilist
 
 ghc-options:
 - -Wall

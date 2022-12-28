@@ -31,6 +31,7 @@ executable aoc
       Day2
       Day3
       Day4
+      Day5
       Paths_aoc
   hs-source-dirs:
       src
@@ -38,6 +39,7 @@ executable aoc
   build-depends:
       base >=4.7 && <5
     , containers
+    , ilist
     , parsec
     , parsec-numbers
     , split

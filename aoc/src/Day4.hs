@@ -5,7 +5,6 @@ module Day4 (problemA, problemB, ElfPair(..)) where
 
 import Aoc (Problem (..))
 import qualified Text.Parsec as Parsec
-import qualified Text.Parsec as Parsec.Parsec
 import Data.Either (rights)
 
 data ElfPair where
@@ -25,7 +24,7 @@ lineParser = do
     return $ ElfPair ls le rs re
 
 makeElfPair::String->Either Parsec.ParseError ElfPair
-makeElfPair = Parsec.Parsec.parse lineParser "4.dat"
+makeElfPair = Parsec.parse lineParser "4.dat"
 
 problemA :: Problem [ElfPair] Int
 problemA = Problem {parsePuzzle = rights . map makeElfPair . lines, solvePuzzle = review}
