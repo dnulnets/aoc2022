@@ -6,6 +6,7 @@ import qualified Day2 (problemA, problemB)
 import qualified Day3 (problemA, problemB)
 import qualified Day4 (problemA, problemB)
 import qualified Day5 (problemA, problemB)
+import qualified Day6 (problemA, problemB)
 import System.Environment (getArgs)
 
 -- Execute the problem to parse and find a solution
@@ -41,7 +42,9 @@ main = do
       "5" -> do
           execute 5 Day5.problemA
           execute 5 Day5.problemB
-      "6" -> execute 6 notImplemented
+      "6" -> do
+          execute 6 Day6.problemA
+          execute 6 Day6.problemB
       "7" -> execute 7 notImplemented
       "8" -> execute 8 notImplemented
       "9" -> execute 9 notImplemented
